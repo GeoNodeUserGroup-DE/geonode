@@ -153,9 +153,6 @@ class MapViewSet(ApiPresetsInitializer, DynamicModelViewSet, AdvertisedListMixin
             "dataset_names_before_changes": [lyr.alternate for lyr in instance.datasets],
         }
 
-        map_layers = serializer.validated_data.get("maplayers", [])
-        tabular_collection = all(("tabular" in layer.dataset.subtype) for layer in map_layers)
-
         # incomming maplayer tabular check
         map_layers = serializer.validated_data.get("maplayers", [])
         if len(map_layers) > 0:
